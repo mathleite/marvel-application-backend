@@ -1,4 +1,4 @@
-versão : " 2.2 "
+versão : " 2.2 "  
 serviços :
   nginx :
     estende :
