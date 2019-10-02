@@ -1,0 +1,5 @@
+versão : ' 2.2 '
+serviços :
+  php :
+      construir : .
+      reiniciar : sempre

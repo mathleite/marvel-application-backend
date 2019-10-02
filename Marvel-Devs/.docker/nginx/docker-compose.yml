@@ -1,0 +1,7 @@
+  
+versão : ' 2.2 '
+serviços :
+  nginx :
+      imagem : nginx: 1.15
+      reiniciar : sempre
+
