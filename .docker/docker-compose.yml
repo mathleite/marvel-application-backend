@@ -1,0 +1,50 @@
+version: '2.2'
+services:
+  nginx:
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: nginx
+    networks:
+      - nginx
+    depends_on:
+      - "php"
+    volumes:
+      - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/config/app.vhost:/etc/nginx/conf.d/app.vhost
+      - ./nginx/Logs/Nginx:/var/log/nginx
+      - ../integrator/:/var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+
+  php:
+    extends:
+      file: ./php7.3/docker-compose.yml
+      service: php
+    networks:
+      - nginx
+      - db
+    depends_on:
+      - "postgres"
+    volumes:
+      - ../integrator/:/var/www/html
+
+  postgres:
+    extends:
+      file: ./postgres/docker-compose.yml
+      service: postgres
+    networks:
+      - db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=integrator
+    volumes:
+      - ./postgres/var/lib/postgres:/var/lib/postgres
+
+networks:
+  nginx:
+  db:
+

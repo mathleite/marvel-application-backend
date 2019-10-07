@@ -1,0 +1,4 @@
+.idea/
+.docker/Makefile
+.docker/nginx/Logs/
+

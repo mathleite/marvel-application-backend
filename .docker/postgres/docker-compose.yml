@@ -1,0 +1,6 @@
+version: '2.2'
+services:
+  postgres:
+    image: postgres:9.6
+    restart: always
+    container_name: postgres
