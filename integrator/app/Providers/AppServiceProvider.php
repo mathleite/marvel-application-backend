@@ -16,11 +16,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('GuzzleHttp\Client', function () {
             return new Client([
-                'base_uri' => 'https://gateway.marvel.com/v1/public/',
+                'base_uri' => getenv('MARVEL_API_BASE_URI'),
                 'query' => [
-                    'apikey' => '6ad1545abd9cd65a8f1203f9b021da32',
-                    'hash' => '1ce381de35ae921ab56fc4d79602fc5d',
-                    'ts' => '1'
+                    'apikey' => getenv('MARVEL_API_KEY'),
+                    'hash' => getenv('MARVEL_API_HASH'),
+                    'ts' => getenv('MARVEL_API_TS')
                 ]
             ]);
         });
