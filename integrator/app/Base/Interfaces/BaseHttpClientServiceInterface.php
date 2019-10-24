@@ -4,16 +4,13 @@
 namespace App\Base\Interfaces;
 
 
-use Illuminate\Http\JsonResponse;
-
 interface BaseHttpClientServiceInterface
 {
     /**
-     * @param string $httpMethod
      * @param string $url
      * @param array  $options
      *
-     * @return JsonResponse
+     * @return \stdClass
      */
-    public function getContentData(string $httpMethod, string $url, array $options = []): JsonResponse;
+    public static function getContentData(string $url, array $options = []): \stdClass;
 }

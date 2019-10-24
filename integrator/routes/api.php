@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('marvel', '\App\Http\Controllers\MarvelController');
+Route::prefix('characters')->group(function () {
+    $charactersController = '\App\Characters\controllers\CharactersController';
+
+    Route::get('getAll', $charactersController . '@getAll');
+});
