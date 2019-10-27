@@ -10,10 +10,12 @@ class CharactersResource extends JsonResource
 {
     public function toArray($request): array
     {
+        $content = $this->getDecodedContent();
+
         return [
-            'data'   => $this->data->results,
-            'status' => $this->status,
-            'code'   => $this->code
+            'data'   => $content->data->results,
+            'status' => $content->status,
+            'code'   => $content->code
         ];
     }
 }
