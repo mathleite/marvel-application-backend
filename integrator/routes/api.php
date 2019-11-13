@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('characters')->group(function () {
-    $charactersController = '\App\Characters\controllers\CharactersController';
+Route::middleware(['api'])->group(function () {
+    Route::prefix('characters')->group(function () {
+        $charactersController = '\App\Characters\controllers\CharactersController';
 
-    Route::get('getAll', $charactersController . '@getAll');
+        Route::get('get-all', $charactersController . '@getAll');
+        Route::post('save-characters', $charactersController . '@saveCharacters');
+        Route::get('get-characters', $charactersController . '@getCharactersByUserName');
+    });
 });
